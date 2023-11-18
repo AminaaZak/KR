@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контрольна робота</title>
+  </head>
+  <body>
+    <h3>
+      Контрольна робота Веб-технології
+      <br />
+      Виконала: Закидальська Аміна, ІА-401, варіант №10
+    </h3>
+    <p>
+      10. Напишіть скрипт за допомогою JavaScript, який зафіксує дані
+      користувача за допомогою prompt функції та відобразіть результат на
+      веб-сторінці.
+    </p>
+
+    <script>
+      let userName = prompt("Будь ласка, введіть ваше ім'я:");
+
+      if (!isValidName(userName)) {
+        alert(
+          "Ви ввели некоректне ім'я. Будь ласка, перезавантажте сторінку і спробуйте знову."
+        );
+      } else {
+        let userBirthdate = prompt(
+          "Будь ласка, введіть вашу дату народження (дд-мм-рррр):"
+        );
+
+        if (
+          userBirthdate === null ||
+          userBirthdate === "" ||
+          !isValidDate(userBirthdate)
+        ) {
+          alert(
+            "Ви ввели некоректну дату народження. Будь ласка, перезавантажте сторінку і спробуйте знову."
+          );
+        } else {
+          let message =
+            "Ім'я користувача: " +
+            userName +
+            ", дата народження: " +
+            userBirthdate;
+
+          document.write("<p>" + message + "</p>");
+        }
+      }
+
+      function isValidName(name) {
+        let regex = /^[A-Za-zА-Яа-яІіЇїЄє]+$/;
+        return regex.test(name);
+      }
+
+      function isValidDate(dateString) {
+        let regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
+        return regex.test(dateString);
+      }
+    </script>
+  </body>
+</html>
